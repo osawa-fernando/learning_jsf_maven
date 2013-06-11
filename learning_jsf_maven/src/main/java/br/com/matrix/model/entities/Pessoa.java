@@ -51,7 +51,10 @@ public class Pessoa implements Serializable
     
     public Pessoa() 
     {
-    
+        
+        this.sexo = new Sexo();
+        this.endereço = new Endereço();
+        
     }
 
     public Integer getIdPessoa() 

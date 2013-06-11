@@ -32,7 +32,7 @@ public class TipoEndereço implements Serializable
 
     public TipoEndereço() 
     {
-    
+        
     }
 
     public Integer getIdTipoEndereço() 
