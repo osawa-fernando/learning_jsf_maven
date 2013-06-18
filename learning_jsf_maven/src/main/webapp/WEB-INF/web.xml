@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     
-    <display-name>semeru_jsf_maven</display-name>
+    <display-name>learning_jsf_maven</display-name>
     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -20,37 +20,20 @@
         </session-timeout>
     </session-config>
     
-     <!-- Endereço dos arquivos de configuração do Spring -->
-    
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/spring-security.xml
-        </param-value>
-    </context-param> 
-
     <!-- Configurações do tema do PrimeFaces -->
+    
+    <dependency>  
+        <groupId>org.primefaces.themes</groupId>  
+        <artifactId>south-street</artifactId>  
+        <version>1.0.4</version>  
+    </dependency> 
+
     <context-param>  
         <param-name>primefaces.THEME</param-name>  
-        <param-value>sam</param-value>  
-    </context-param>         
+        <param-value>south-street</param-value>  
+    </context-param>  
     
-    <!-- Filtros do Spring  -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-    
-        <!-- Configurações do JavaServer Faces -->
+    <!-- Configurações do JavaServer Faces -->
     
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>

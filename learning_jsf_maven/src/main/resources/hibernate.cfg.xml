@@ -31,12 +31,12 @@
         <property name="c3p0.idle_test_period">300</property>
         
         <!-- LISTA DE ENTIDADES -->
-        <mapping class="br.com.semeru.model.entities.Cidade"/>        
-        <mapping class="br.com.semeru.model.entities.Endereço"/>      
-        <mapping class="br.com.semeru.model.entities.Estado"/>      
-        <mapping class="br.com.semeru.model.entities.Pessoa"/>               
-        <mapping class="br.com.semeru.model.entities.Sexo"/>
-        <mapping class="br.com.semeru.model.entities.TipoEndereço"/>
-        <mapping class="br.com.semeru.model.entities.TipoLogradouro"/>
+        <mapping class="br.com.matrix.model.entities.Cidade"/>        
+        <mapping class="br.com.matrix.model.entities.Endereço"/>      
+        <mapping class="br.com.matrix.model.entities.Estado"/>      
+        <mapping class="br.com.matrix.model.entities.Pessoa"/>               
+        <mapping class="br.com.matrix.model.entities.Sexo"/>
+        <mapping class="br.com.matrix.model.entities.TipoEndereço"/>
+        <mapping class="br.com.matrix.model.entities.TipoLogradouro"/>
     </session-factory>
 </hibernate-configuration>
