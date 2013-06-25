@@ -51,7 +51,7 @@ public class Pessoa implements Serializable
     
     public Pessoa() 
     {
-    
+        this.sexo = new Sexo();
     }
 
     public Integer getIdPessoa() 
