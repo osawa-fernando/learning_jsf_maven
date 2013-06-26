@@ -61,18 +61,22 @@ public class MbPessoa  implements Serializable {
 
     private void insertPessoa() {
         pessoaDAO().save(pessoa);
+        endereço.setPessoa(pessoa);
+        endereçoDAO().save(endereço);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
     }
 
     private void updatePessoa() {
         pessoaDAO().update(pessoa);
+        endereçoDAO().update(endereço);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
     }
     
     public String deletePessoa() {
         pessoaDAO().remove(pessoa);
+        endereçoDAO().remove(endereço);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
         return null;
@@ -87,12 +91,12 @@ public class MbPessoa  implements Serializable {
         this.pessoas = pessoas;
     }
 
-    public List<Endereço> getEnderecos() {
+    public List<Endereço> getEndereços() {
         endereços = endereçoDAO().getEntities();
         return endereços;
     }
 
-    public void setEnderecos(List<Endereço> endereços) {
+    public void setEndereços(List<Endereço> endereços) {
         this.endereços = endereços;
     }
 
@@ -104,11 +108,11 @@ public class MbPessoa  implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public Endereço getEndereco() {
+    public Endereço getEndereço() {
         return endereço;
     }
 
-    public void setEndereco(Endereço endereco) {
+    public void setEndereço(Endereço endereço) {
         this.endereço = endereço;
     }
     
