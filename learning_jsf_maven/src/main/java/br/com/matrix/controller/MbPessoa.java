@@ -13,12 +13,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean(name = "mbPessoa")
+@ManagedBean
 @SessionScoped
 public class MbPessoa  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    private String confereSenha;
     private Pessoa pessoa = new Pessoa();
     private Endereço endereço = new Endereço();
     private List<Pessoa> pessoas;
@@ -50,8 +51,8 @@ public class MbPessoa  implements Serializable {
     public String addPessoa(){
         Date date = new Date();
         if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0){
-           pessoa.setDataDeCadastro(date);
-            insertPessoa();
+            pessoa.setDataDeCadastro(date);
+            insertPessoa();            
         } else {
             updatePessoa();
         }
@@ -60,8 +61,9 @@ public class MbPessoa  implements Serializable {
     }
 
     private void insertPessoa() {
+        comparaSenha();
         pessoaDAO().save(pessoa);
-        endereço.setPessoa(pessoa);
+            endereço.setPessoa(pessoa);
         endereçoDAO().save(endereço);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
@@ -81,7 +83,17 @@ public class MbPessoa  implements Serializable {
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
         return null;
     }
-
+    
+    private Boolean comparaSenha() {
+        if (pessoa.getSenha() == null ? confereSenha == null : pessoa.getSenha().equals(confereSenha)) {
+            return true;
+        } else{        
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "As senhas não conferem.", ""));
+            return false;
+        }       
+    }
+    
     public List<Pessoa> getPessoas() {
         pessoas = pessoaDAO().getEntities();
         return pessoas;
@@ -114,6 +126,14 @@ public class MbPessoa  implements Serializable {
 
     public void setEndereço(Endereço endereço) {
         this.endereço = endereço;
+    }
+
+    public String getConfereSenha() {
+        return confereSenha;
+    }
+
+    public void setConfereSenha(String confereSenha) {
+        this.confereSenha = confereSenha;
     }
     
 }

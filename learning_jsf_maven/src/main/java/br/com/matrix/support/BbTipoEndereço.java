@@ -12,7 +12,7 @@ import org.hibernate.Session;
 
 @ManagedBean(name="bbTipoEndereço")
 @RequestScoped
-public class BbTipoEndereco  implements Serializable {
+public class BbTipoEndereço  implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
