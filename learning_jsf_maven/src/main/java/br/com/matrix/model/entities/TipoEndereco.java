@@ -12,32 +12,22 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name = "tipologradouro")
-public class TipoLogradouro implements Serializable
+@Table(name = "tipoendereco")
+public class TipoEndereco implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    @Column(name = "IdTipoLogradouro", nullable = false)
-    private Integer idTipoLogradouro;
+    @Column(name = "IdTipoEndereco", nullable = false)
+    private Integer idTipoEndereco;
     @Column(name = "Nome", length = 40, nullable = false)
     private String nome;
-    @OneToMany(mappedBy = "tipologradouro", fetch = FetchType.LAZY)
-    @ForeignKey(name = "TipoLogradouroEndereco")
+    @OneToMany(mappedBy = "tipoendereco", fetch = FetchType.LAZY)
+    @ForeignKey(name = "TipoEnderecoEndereco")
     private List<Endereco> enderecos;
 
-    public TipoLogradouro()
+    public TipoEndereco()
     {
-    }
-
-    public Integer getIdTipoLogradouro()
-    {
-        return idTipoLogradouro;
-    }
-
-    public void setIdTipoLogradouro(Integer idTipoLogradouro)
-    {
-        this.idTipoLogradouro = idTipoLogradouro;
     }
 
     public String getNome()
@@ -59,11 +49,20 @@ public class TipoLogradouro implements Serializable
     {
         this.enderecos = enderecos;
     }
+    
+	public Integer getIdTipoEndereco()
+    {
+        return idTipoEndereco;
+    }
 
-    @Override
+    public void setIdTipoEndereco(Integer idTipoEndereco)
+    {
+        this.idTipoEndereco = idTipoEndereco;
+    }
+
+ @Override
     public boolean equals(Object obj)
     {
-
         if (obj == null)
         {
             return false;
@@ -72,8 +71,8 @@ public class TipoLogradouro implements Serializable
         {
             return false;
         }
-        final TipoLogradouro other = (TipoLogradouro) obj;
-        if (this.idTipoLogradouro != other.idTipoLogradouro && (this.idTipoLogradouro == null || !this.idTipoLogradouro.equals(other.idTipoLogradouro)))
+        final TipoEndereco other = (TipoEndereco) obj;
+        if (this.idTipoEndereco != other.idTipoEndereco && (this.idTipoEndereco == null || !this.idTipoEndereco.equals(other.idTipoEndereco)))
         {
             return false;
         }
@@ -83,8 +82,8 @@ public class TipoLogradouro implements Serializable
     @Override
     public int hashCode()
     {
-        int hash = 7;
-        hash = 37 * hash + (this.idTipoLogradouro != null ? this.idTipoLogradouro.hashCode() : 0);
+        int hash = 5;
+        hash = 53 * hash + (this.idTipoEndereco != null ? this.idTipoEndereco.hashCode() : 0);
         return hash;
     }
 }

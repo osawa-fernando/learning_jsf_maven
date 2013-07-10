@@ -15,99 +15,74 @@ import org.hibernate.annotations.ForeignKey;
 @Table(name = "estado")
 public class Estado implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue
     @Column(name = "IdEstado", nullable = false)
     private Integer idEstado;
     @Column(name = "Nome", length = 40, nullable = false)
     private String nome;
-    
     @OneToMany(mappedBy = "estado", fetch = FetchType.LAZY)
-    @ForeignKey(name = "EstadoEndereço")
-    private List<Endereço> endereços;
+    @ForeignKey(name = "EstadoEndereco")
+    private List<Endereco> enderecos;
 
-    public Estado() 
+    public Estado()
     {
-    
     }
 
-    public Integer getIdEstado() 
+    public Integer getIdEstado()
     {
-    
         return idEstado;
-    
     }
 
-    public void setIdEstado(Integer idEstado) 
+    public void setIdEstado(Integer idEstado)
     {
-    
         this.idEstado = idEstado;
-    
     }
 
-    public String getNome() 
+    public String getNome()
     {
-    
         return nome;
-    
     }
 
-    public void setNome(String nome) 
+    public void setNome(String nome)
     {
-    
         this.nome = nome;
-    
     }
 
-    public List<Endereço> getEndereços() 
+    public List<Endereco> getEnderecos()
     {
-    
-        return endereços;
-    
+        return enderecos;
     }
 
-    public void setEndereços(List<Endereço> endereços) 
+    public void setEnderecos(List<Endereco> enderecos)
     {
-    
-        this.endereços = endereços;
-    
+        this.enderecos = enderecos;
     }
 
     @Override
-    public int hashCode() 
+    public int hashCode()
     {
-    
         int hash = 7;
         hash = 47 * hash + (this.idEstado != null ? this.idEstado.hashCode() : 0);
         return hash;
-    
     }
 
     @Override
-    public boolean equals(Object obj) 
+    public boolean equals(Object obj)
     {
-    
-        if (obj == null) 
+        if (obj == null)
         {
-        
             return false;
-        
         }
-        if (getClass() != obj.getClass()) 
+        if (getClass() != obj.getClass())
         {
-        
             return false;
-        
         }
         final Estado other = (Estado) obj;
-        if (this.idEstado != other.idEstado && (this.idEstado == null || !this.idEstado.equals(other.idEstado))) 
+        if (this.idEstado != other.idEstado && (this.idEstado == null || !this.idEstado.equals(other.idEstado)))
         {
-        
             return false;
-        
         }
         return true;
     }

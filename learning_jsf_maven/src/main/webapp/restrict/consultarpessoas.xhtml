@@ -43,7 +43,7 @@
                     <f:facet name="header">
                         <h:outputText value="Cidade"/>
                     </f:facet>
-                    <h:outputText value="#{pessoa.endereço.cidade.nome}"/>
+                    <h:outputText value="#{pessoa.endereco.cidade.nome}"/>
                 </p:column>
 
                 <p:column>
@@ -51,17 +51,17 @@
                         <h:outputText value="Ações"/>
                     </f:facet>
                     <p:commandButton action="#{mbPessoa.editPessoa}"
-                        value="Editar" image="ui-icon ui-icon-pencil"
-                        update="@form" ajax="false">
+                                     value="Editar" image="ui-icon ui-icon-pencil"
+                                     update="@form" ajax="false">
                         <f:setPropertyActionListener value="#{pessoa}" target="#{mbPessoa.pessoa}"/>
                         <f:setPropertyActionListener value="#{pessoa.idPessoa}" target="#{mbPessoa.pessoa.idPessoa}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereço}" target="#{mbPessoa.endereço}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereço.estado.idEstado}" target="#{mbPessoa.endereço.estado.idEstado}"/>                        
-                        <f:setPropertyActionListener value="#{pessoa.endereço.cidade.idCidade}" target="#{mbPessoa.endereço.cidade.idCidade}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereço.tipoEndereço.idTipoEndereço}" target="#{mbPessoa.endereço.tipoEndereço.idTipoEndereço}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereço.tipoLogradouro.idTipoLogradouro}" target="#{mbPessoa.endereço.tipoLogradouro.idTipoLogradouro}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco}" target="#{mbPessoa.endereco}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco.estado.idEstado}" target="#{mbPessoa.endereco.estado.idEstado}"/>                        
+                        <f:setPropertyActionListener value="#{pessoa.endereco.cidade.idCidade}" target="#{mbPessoa.endereco.cidade.idCidade}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoEndereco.idTipoEndereco}" target="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoLogradouro.idTipoLogradouro}" target="#{mbPessoa.endereco.tipologradouro.idTipoLogradouro}"/>
                     </p:commandButton>
-                    
+
                     <p:commandButton value="Cancelar" action="#{mbPessoa.limpPessoa}"
                                      image="ui-icon ui-icon-close" update="@form"/>
 

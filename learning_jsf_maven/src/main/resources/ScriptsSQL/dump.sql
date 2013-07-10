@@ -1,4 +1,4 @@
-USE semeru_jsf_maven_db;
+USE learning_jsf_maven_db;
 INSERT INTO ESTADO VALUES
 (1,'ACRE'),
 (2,'ALAGOAS'),
@@ -27,10 +27,10 @@ INSERT INTO ESTADO VALUES
 (25,'SERGIPE'),
 (26,'SÃO PAULO'),
 (27,'TOCANTINS');
-INSERT INTO `sexo` (`IdSexo`,`DescriçãoSexo`) VALUES 
+INSERT INTO `sexo` (`IdSexo`,`Descricao`) VALUES 
  (1,'MASCULINO'),
  (2,'FEMININO');
-INSERT INTO `tipologradouro` (`IdTipoLogradouro`,`DescriçãoTipoLogradouro`) VALUES 
+INSERT INTO `tipologradouro` (`IdTipoLogradouro`,`Nome`) VALUES 
  (1,'RUA'),
  (2,'ALAMEDA'),
  (3,'AVENIDA'),
@@ -38,7 +38,7 @@ INSERT INTO `tipologradouro` (`IdTipoLogradouro`,`DescriçãoTipoLogradouro`) VA
  (5,'BECO'),
  (6,'TRAVESSA'),
  (7,'PRAÇA');
-INSERT INTO `tipoendereco` (`IdTipoEndereco`,`DescriçãoTipoEndereco`) VALUES 
+INSERT INTO `tipoendereco` (`IdTipoEndereco`,`Nome`) VALUES 
  (1,'RESIDENCIAL'),
  (2,'COMERCIAL'),
  (3,'RODOVIA'),

@@ -32,11 +32,11 @@
         
         <!-- LISTA DE ENTIDADES -->
         <mapping class="br.com.matrix.model.entities.Cidade"/>        
-        <mapping class="br.com.matrix.model.entities.Endereço"/>      
+        <mapping class="br.com.matrix.model.entities.Endereco"/>      
         <mapping class="br.com.matrix.model.entities.Estado"/>      
         <mapping class="br.com.matrix.model.entities.Pessoa"/>               
         <mapping class="br.com.matrix.model.entities.Sexo"/>
-        <mapping class="br.com.matrix.model.entities.TipoEndereço"/>
+        <mapping class="br.com.matrix.model.entities.TipoEndereco"/>
         <mapping class="br.com.matrix.model.entities.TipoLogradouro"/>
     </session-factory>
 </hibernate-configuration>

@@ -9,14 +9,15 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name="bbCidade")
+@ManagedBean(name = "bbCidade")
 @RequestScoped
-public class BbCidade  implements Serializable {
-    
+public class BbCidade implements Serializable
+{
     private static final long serialVersionUID = 1L;
     private List<Cidade> cidades;
 
-    public List<Cidade> getCidades() {
+    public List<Cidade> getCidades()
+    {
         InterfaceDAO<Cidade> cidadeDAO = new HibernateDAO<Cidade>(Cidade.class, FacesContextUtil.getRequestSession());
         return cidadeDAO.getEntities();
     }

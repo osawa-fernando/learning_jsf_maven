@@ -29,7 +29,7 @@
 
                                 <h:outputLabel for="sexo" value="Sexo.:"/>
                                 <p:selectOneMenu id="sexo" value="#{mbPessoa.pessoa.sexo.idSexo}">
-                                    <f:selectItems value="#{bbSexo.sexos}" var="sexo" itemValue="#{sexo.idSexo}" itemLabel="#{sexo.descrição}"/>
+                                    <f:selectItems value="#{bbSexo.sexos}" var="sexo" itemValue="#{sexo.idSexo}" itemLabel="#{sexo.descricao}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="telefone" value="Telefone.:"/>
@@ -72,55 +72,55 @@
                         </p:panel>
                     </p:tab>
 
-                    <p:tab title="Informações do Endereço" id="infoEndereço">
-                        <p:panel header="Informações do Endereço">
+                    <p:tab title="Informações do Endereco" id="infoEndereco">
+                        <p:panel header="Informações do Endereco">
                             <p:growl id="msg1"/>
                             <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
 
                                 <h:outputLabel for="uf" value="Estado.:" />
-                                <p:selectOneMenu id="uf" value="#{mbPessoa.endereço.estado.idEstado}">
+                                <p:selectOneMenu id="uf" value="#{mbPessoa.endereco.estado.idEstado}">
                                     <f:selectItems value="#{bbEstado.estados}" var="estado"
                                                    itemValue="#{estado.idEstado}" itemLabel="#{estado.nome}"/>
                                 </p:selectOneMenu>
 
 
                                 <h:outputLabel for="cidade" value="Cidade.:" />
-                                <p:selectOneMenu id="cidade" value="#{mbPessoa.endereço.cidade.idCidade}">
+                                <p:selectOneMenu id="cidade" value="#{mbPessoa.endereco.cidade.idCidade}">
                                     <f:selectItems value="#{bbCidade.cidades}" var="cidade"
                                                    itemValue="#{cidade.idCidade}" itemLabel="#{cidade.nome}"/>
                                 </p:selectOneMenu>
 
 
                                 <h:outputLabel for="bairro" value="Bairro.:"/>
-                                <p:inputText id="bairro" size="60" value="#{mbPessoa.endereço.bairro}" required="true" 
+                                <p:inputText id="bairro" size="60" value="#{mbPessoa.endereco.bairro}" required="true" 
                                              requiredMessage="É obrigatório o preenchimento do campo [Bairro]"
                                              onkeyup="this.value = this.value.toUpperCase()"/>
 
-                                <h:outputLabel for="idTipoEndereço" value="Tipo de Endereço.:"/>
-                                <p:selectOneMenu id="idTipoEndereço" value="#{mbPessoa.endereço.tipoEndereço.idTipoEndereço}">
-                                    <f:selectItems value="#{bbTipoEndereço.tipoEndereços}" var="tipoEndereço"
-                                                   itemValue="#{tipoEndereço.idTipoEndereço}" itemLabel="#{tipoEndereço.nome}"/>
+                                <h:outputLabel for="idTipoEndereco" value="Tipo de Endereco.:"/>
+                                <p:selectOneMenu id="idTipoEndereco" value="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}">
+                                    <f:selectItems value="#{bbTipoEndereco.tipoEnderecos}" var="tipoEndereco"
+                                                   itemValue="#{tipoEndereco.idTipoEndereco}" itemLabel="#{tipoEndereco.nome}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="idTipoLogradouro" value="Tipo de Logradouro.:"/>
-                                <p:selectOneMenu id="idTipoLogradouro" value="#{mbPessoa.endereço.tipoLogradouro.idTipoLogradouro}">
+                                <p:selectOneMenu id="idTipoLogradouro" value="#{mbPessoa.endereco.tipologradouro.idTipoLogradouro}">
                                     <f:selectItems value="#{bbTipoLogradouro.tipoLogradouros}" var="tipoLogradouro"
                                                    itemValue="#{tipoLogradouro.idTipoLogradouro}" itemLabel="#{tipoLogradouro.nome}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="nomelogradouro" value="Logradouro.:"/>
-                                <p:inputText id="nomelogradouro" size="75" value="#{mbPessoa.endereço.nomeLogradouro}" 
+                                <p:inputText id="nomelogradouro" size="75" value="#{mbPessoa.endereco.nomeLogradouro}" 
                                              required="true" requiredMessage="É obrigatório o preenchimento do campo [Logradouro]"
                                              onkeyup="this.value = this.value.toUpperCase()"/>
 
                                 <h:outputLabel for="cep" value="CEP.:"/>
-                                <p:inputMask id="cep" size="10" value="#{mbPessoa.endereço.cep}" mask="99999-999" required="true" requiredMessage="É obrigatório o preenchimento do campo [CEP]"/> 			
+                                <p:inputMask id="cep" size="10" value="#{mbPessoa.endereco.cep}" mask="99999-999" required="true" requiredMessage="É obrigatório o preenchimento do campo [CEP]"/> 			
 
                                 <h:outputLabel for="numero" value="Numero.:"/>
-                                <p:inputText id="numero" size="8" value="#{mbPessoa.endereço.numero}" required="true" requiredMessage="É obrigatório o preenchimento do campo [Número]"/>	
+                                <p:inputText id="numero" size="8" value="#{mbPessoa.endereco.numero}" required="true" requiredMessage="É obrigatório o preenchimento do campo [Número]"/>	
 
                                 <h:outputLabel for="complemento" value="Complemento.:"/>
-                                <p:inputText id="complemento" size="20" value="#{mbPessoa.endereço.complemento}" onkeyup="this.value = this.value.toUpperCase()"/>
+                                <p:inputText id="complemento" size="20" value="#{mbPessoa.endereco.complemento}" onkeyup="this.value = this.value.toUpperCase()"/>
 
                                 <p:panel>
                                     <p:commandButton value="Salvar" action="#{mbPessoa.addPessoa}"

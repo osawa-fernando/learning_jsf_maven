@@ -15,85 +15,81 @@ import org.hibernate.annotations.ForeignKey;
 @Table(name = "cidade")
 public class Cidade implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue
     @Column(name = "IdCidade", nullable = false)
     private Integer idCidade;
     @Column(name = "Nome", length = 80, nullable = false)
     private String nome;
-    
     @OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY)
-    @ForeignKey(name = "CidadeEndereço")
-    private List<Endereço> endereços;
+    @ForeignKey(name = "CidadeEndereco")
+    private List<Endereco> enderecos;
 
-    public Cidade() 
+    public Cidade()
     {
-    
     }
 
-    public Integer getIdCidade() 
+    public Integer getIdCidade()
     {
-    
+
         return idCidade;
-    
+
     }
 
-    public void setIdCidade(Integer idCidade) 
+    public void setIdCidade(Integer idCidade)
     {
-    
+
         this.idCidade = idCidade;
-    
+
     }
 
-    public String getNome() 
+    public String getNome()
     {
-    
+
         return nome;
-    
+
     }
 
-    public void setNome(String nome) 
+    public void setNome(String nome)
     {
-    
+
         this.nome = nome;
-    
+    }
+
+    public List<Endereco> getEnderecos()
+    {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos)
+    {
+        this.enderecos = enderecos;
     }
 
     @Override
-    public int hashCode() 
+    public int hashCode()
     {
-    
         int hash = 3;
         hash = 17 * hash + (this.idCidade != null ? this.idCidade.hashCode() : 0);
         return hash;
-    
     }
 
     @Override
-    public boolean equals(Object obj) 
+    public boolean equals(Object obj)
     {
-        
-        if (obj == null) 
+        if (obj == null)
         {
-        
             return false;
-        
         }
-        if (getClass() != obj.getClass()) 
+        if (getClass() != obj.getClass())
         {
-        
             return false;
-        
         }
         final Cidade other = (Cidade) obj;
-        if (this.idCidade != other.idCidade && (this.idCidade == null || !this.idCidade.equals(other.idCidade))) 
+        if (this.idCidade != other.idCidade && (this.idCidade == null || !this.idCidade.equals(other.idCidade)))
         {
-        
             return false;
-        
         }
         return true;
     }

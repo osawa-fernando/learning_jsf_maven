@@ -9,15 +9,15 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name="bbSexo")
+@ManagedBean(name = "bbSexo")
 @RequestScoped
-public class BbSexo  implements Serializable {
-
+public class BbSexo implements Serializable
+{
     private static final long serialVersionUID = 1L;
-    
-    public List<Sexo> getSexos(){
+
+    public List<Sexo> getSexos()
+    {
         InterfaceDAO<Sexo> sexoDAO = new HibernateDAO<Sexo>(Sexo.class, FacesContextUtil.getRequestSession());
         return sexoDAO.getEntities();
     }
-    
 }
