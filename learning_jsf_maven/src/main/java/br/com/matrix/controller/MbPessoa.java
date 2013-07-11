@@ -1,5 +1,6 @@
 package br.com.matrix.controller;
 
+import br.com.learning.conversores.ConverterSHA1;
 import br.com.matrix.model.dao.HibernateDAO;
 import br.com.matrix.model.dao.InterfaceDAO;
 import br.com.matrix.model.entities.Endereco;
@@ -15,8 +16,8 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
-public class MbPessoa implements Serializable
-{
+public class MbPessoa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private String confereSenha;
     private Pessoa pessoa = new Pessoa();
@@ -24,140 +25,110 @@ public class MbPessoa implements Serializable
     private List<Pessoa> pessoas;
     private List<Endereco> enderecos;
 
-    public MbPessoa()
-    {
+    public MbPessoa() {
     }
 
-    private InterfaceDAO<Pessoa> pessoaDAO()
-    {
+    private InterfaceDAO<Pessoa> pessoaDAO() {
         InterfaceDAO<Pessoa> pessoaDAO = new HibernateDAO<Pessoa>(Pessoa.class, FacesContextUtil.getRequestSession());
         return pessoaDAO;
     }
 
-    private InterfaceDAO<Endereco> enderecoDAO()
-    {
+    private InterfaceDAO<Endereco> enderecoDAO() {
         InterfaceDAO<Endereco> enderecoDAO = new HibernateDAO<Endereco>(Endereco.class, FacesContextUtil.getRequestSession());
         return enderecoDAO;
     }
 
-    public String limpPessoa()
-    {
+    public String limpPessoa() {
         pessoa = new Pessoa();
         endereco = new Endereco();
         return editPessoa();
     }
 
-    public String editPessoa()
-    {
+    public String editPessoa() {
         return "/restrict/cadastrarpessoa.faces";
     }
 
-    public String addPessoa()
-    {
+    public String addPessoa() {
         Date date = new Date();
-        if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0)
-        {
+        if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0) {
             pessoa.setDataDeCadastro(date);
             insertPessoa();
-        }
-        else
-        {
+        } else {
             updatePessoa();
         }
 
         return null;
     }
 
-    private void insertPessoa()
-    {
-        comparaSenha();
-        pessoaDAO().save(pessoa);
-        endereco.setPessoa(pessoa);
-        enderecoDAO().save(endereco);
-        FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
+    private void insertPessoa() {
+        pessoa.setSenha(ConverterSHA1.cipher(pessoa.getSenha()));
+        if (pessoa.getSenha() == null ? confereSenha == null : pessoa.getSenha().equals(ConverterSHA1.cipher(confereSenha))) {
+            pessoa.setPermissao("ROLE_ADMIN");
+            pessoaDAO().save(pessoa);
+            endereco.setPessoa(pessoa);
+            enderecoDAO().save(endereco);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "As senhas não conferem.", ""));
+        }
     }
 
-    private void updatePessoa()
-    {
+    private void updatePessoa() {
         pessoaDAO().update(pessoa);
         enderecoDAO().update(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
     }
 
-    public String deletePessoa()
-    {
+    public String deletePessoa() {
         pessoaDAO().remove(pessoa);
         enderecoDAO().remove(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
         return null;
     }
 
-    private Boolean comparaSenha()
-    {
-        if (pessoa.getSenha() == null ? confereSenha == null : pessoa.getSenha().equals(confereSenha))
-        {
-            return true;
-        }
-        else
-        {
-            FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "As senhas não conferem.", ""));
-            return false;
-        }
-    }
-
-    public List<Pessoa> getPessoas()
-    {
+    public List<Pessoa> getPessoas() {
         pessoas = pessoaDAO().getEntities();
         return pessoas;
     }
 
-    public void setPessoas(List<Pessoa> pessoas)
-    {
+    public void setPessoas(List<Pessoa> pessoas) {
         this.pessoas = pessoas;
     }
 
-    public List<Endereco> getEnderecos()
-    {
+    public List<Endereco> getEnderecos() {
         enderecos = enderecoDAO().getEntities();
         return enderecos;
     }
 
-    public void setEnderecos(List<Endereco> enderecos)
-    {
+    public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
     }
 
-    public Pessoa getPessoa()
-    {
+    public Pessoa getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(Pessoa pessoa)
-    {
+    public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
 
-    public Endereco getEndereco()
-    {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco)
-    {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    public String getConfereSenha()
-    {
+    public String getConfereSenha() {
         return confereSenha;
     }
 
-    public void setConfereSenha(String confereSenha)
-    {
+    public void setConfereSenha(String confereSenha) {
         this.confereSenha = confereSenha;
     }
 }

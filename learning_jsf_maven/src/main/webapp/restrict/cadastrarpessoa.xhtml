@@ -33,7 +33,7 @@
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="telefone" value="Telefone.:"/>
-                                <p:inputMask id="telefone" size="40" mask="(99) 99999-9999"
+                                <p:inputMask id="telefone" size="40" mask="(99) 9999-9999"
                                              value="#{mbPessoa.pessoa.telefone}"
                                              required="true" requiredMessage="O campo [Telefone] é obrigatório"
                                              onkeyup="this.value = this.value.toUpperCase()"/>
@@ -72,8 +72,8 @@
                         </p:panel>
                     </p:tab>
 
-                    <p:tab title="Informações do Endereco" id="infoEndereco">
-                        <p:panel header="Informações do Endereco">
+                    <p:tab title="Informações do Endereço" id="infoEndereco">
+                        <p:panel header="Informações do Endereço">
                             <p:growl id="msg1"/>
                             <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
 
@@ -96,7 +96,7 @@
                                              requiredMessage="É obrigatório o preenchimento do campo [Bairro]"
                                              onkeyup="this.value = this.value.toUpperCase()"/>
 
-                                <h:outputLabel for="idTipoEndereco" value="Tipo de Endereco.:"/>
+                                <h:outputLabel for="idTipoEndereco" value="Tipo de Endereço.:"/>
                                 <p:selectOneMenu id="idTipoEndereco" value="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}">
                                     <f:selectItems value="#{bbTipoEndereco.tipoEnderecos}" var="tipoEndereco"
                                                    itemValue="#{tipoEndereco.idTipoEndereco}" itemLabel="#{tipoEndereco.nome}"/>
@@ -137,4 +137,3 @@
     </ui:define>
 
 </ui:composition>
-

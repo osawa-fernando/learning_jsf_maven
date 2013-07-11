@@ -58,8 +58,8 @@
                         <f:setPropertyActionListener value="#{pessoa.endereco}" target="#{mbPessoa.endereco}"/>
                         <f:setPropertyActionListener value="#{pessoa.endereco.estado.idEstado}" target="#{mbPessoa.endereco.estado.idEstado}"/>                        
                         <f:setPropertyActionListener value="#{pessoa.endereco.cidade.idCidade}" target="#{mbPessoa.endereco.cidade.idCidade}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoEndereco.idTipoEndereco}" target="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoLogradouro.idTipoLogradouro}" target="#{mbPessoa.endereco.tipologradouro.idTipoLogradouro}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoendereco.idTipoEndereco}" target="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}"/>
+                        <f:setPropertyActionListener value="#{pessoa.endereco.tipologradouro.idTipoLogradouro}" target="#{mbPessoa.endereco.tipologradouro.idTipoLogradouro}"/>
                     </p:commandButton>
 
                     <p:commandButton value="Cancelar" action="#{mbPessoa.limpPessoa}"
